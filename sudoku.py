@@ -1,30 +1,33 @@
-import random
+board = [
+    [0, 0, 0, 8, 0, 0, 4, 0, 3],
+    [2, 0, 0, 0, 0, 4, 8, 9, 0],
+    [0, 9, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 2, 9, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 7, 0, 6, 5, 0, 0, 0, 0],
+    [9, 0, 0, 0, 0, 0, 0, 8, 0],
+    [0, 6, 2, 7, 0, 0, 0, 0, 1],
+    [4, 0, 3, 0, 0, 6, 0, 0, 0]
+]
 
-base=[[["0"]*3 for _ in range(3)] for _ in range(9)]
-# base[8][2][0]=7
-# print (base)
-
-for i in range(len(base)):
-    for j in range(len(base[i])):
-        print(base[i][j],i,j)
-
-
-st=" 1 2 3 \n 4 5 6 \n 7 8 9"
-print(st)
-def out(a):
-    st=""
-    for i in a:
-        st+="new row \n"
+def showboard(b):
+    hflag=0
+    vflag=0
+    hline=" ----------------------------"
+    print(hline)
+    print("|",end="")
+    for i in b:
+        if hflag==3:
+            hflag=0
+            print(hline)
         for j in i:
-            st+="X"
-            for k in j:
-                st+=" 1 "
-                
-        st+="X \n"
-    return st
-# base[0][0]=random.sample(range(1, 10), 9)
+            if vflag==3:
+                vflag=0
+                print("|",end="")
+            print(f' {j} ',end = "")
+            vflag+=1
+        print("|")
+        hflag+=1
+    print(hline)
 
-# print(base)
-
-print (out(base))
-# print(random.sample(range(1, 10), 9))
+showboard(board)
